@@ -83,7 +83,7 @@ public static class AnimalEndpoints
             {
                 return Results.NotFound();
             }
-            return Results.Ok(animal.Visits);
+            return Results.Ok(StataticData.Visits.FirstOrDefault(v => v.AnimalID == animalId));
         });
         
         // add new visit
@@ -95,7 +95,7 @@ public static class AnimalEndpoints
             {
                 return Results.NotFound();
             }
-            animal.Visits.Add(visit);
+            StataticData.Visits.Add(visit);
             return Results.Created($"/animals/{animalId}", visit);
         });
     }
